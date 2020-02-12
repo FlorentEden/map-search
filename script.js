@@ -1,8 +1,15 @@
+document.addEventListener('DOMContentLoaded', function() {
+   var chargeSign = document.getElementById('loader');
+   chargeSign.style.display = "none";
+}, false);
+
 
 CreateDataList();
 function CreateDataList() {
   for (var i = 0; i < listadress.length; i++) {
     var adres = listadress[i];
+    var input = document.getElementById("inputSearch").value;
+    console.log(listadress[i].numero == input);
     var div = document.createElement("option");
     var datalist = document.getElementById('address');
     div.setAttribute("value", JSON.stringify(listadress[i].numero)+" "+listadress[i].voie_nom);
@@ -36,9 +43,7 @@ function createPoint() {
     if (input == listadress[i].numero+" "+listadress[i].voie_nom) {
       var marker = L.marker([listadress[i].lat, listadress[i].long]).addTo(map);
       marker.bindPopup(listadress[i].numero+" "+listadress[i].voie_nom).openPopup();
-      console.log(marker);
       //setLatLng(listadress[i].latn, listadress[i].long)
-      console.log(map);
     }
   }
   //var marker2 = L.marker([lat , long]).addTo(map);
